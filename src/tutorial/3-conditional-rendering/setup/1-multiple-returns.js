@@ -6,7 +6,7 @@ const MultipleReturns = () => {
   const [user, setUser] = useState("default Users");
   useEffect(() => {
     fetch(url)
-      .thrn((resp) => {
+      .then((resp) => {
         if (resp.status >= 200 && resp.status <= 299) {
           return resp.json();
         } else {

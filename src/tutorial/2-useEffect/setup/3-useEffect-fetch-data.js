@@ -16,7 +16,7 @@ const UseEffectFetchData = () => {
   }, []);
   return (
     <>
-      <h3>Github Users Fetch Data F</h3>
+      <h3>Github Users Fetch Data</h3>
       <ul className="users">
         {users.map((user) => {
           const { id, login, avatar_url, html_url } = user;

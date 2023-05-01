@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 const url = "https://api.github.com/users";
 
 const UseEffectFetchData = () => {
+  // const [server, setServer] = useState([]);
   const [users, setUsers] = useState([]);
   const getUsers = async () => {
     const response = await fetch(url);
@@ -15,7 +16,7 @@ const UseEffectFetchData = () => {
   }, []);
   return (
     <>
-      <h3>github Users</h3>
+      <h3>Github Users Fetch Data F</h3>
       <ul className="users">
         {users.map((user) => {
           const { id, login, avatar_url, html_url } = user;

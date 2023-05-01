@@ -13,7 +13,7 @@ const UseEffectFetchData = () => {
   };
   useEffect(() => {
     getUsers();
-  }, []);
+  }, []); //add dependency array run once the component renders
   return (
     <>
       <h3>Github Users Fetch Data</h3>

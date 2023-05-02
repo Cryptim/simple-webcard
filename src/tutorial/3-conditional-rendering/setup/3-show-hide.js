@@ -23,6 +23,9 @@ const Item = () => {
   };
   useEffect(() => {
     window.addEventListener("resize", checkSize);
+    return () => {
+      window.removeEventListener("resize", checkSize); //cleanup function
+    };
   }, []);
   return (
     <div style={{ marginTop: "2rem" }}>

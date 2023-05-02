@@ -8,11 +8,16 @@ import React, { useState } from "react";
 const ControlledInputs = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Hello Nigerians");
+    if (firstName && email) {
+      const person = { firstName: firstName, email: email };
+      console.log(person);
+    } else {
+      console.log("empty values");
+    }
   };
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
-
+  const [people, setPeople] = useState([]); //where i will be storing the info of people
   return (
     <article>
       {/* //onSubmit={handleSubmit} */}

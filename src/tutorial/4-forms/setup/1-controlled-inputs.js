@@ -9,8 +9,14 @@ const ControlledInputs = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (firstName && email) {
-      const person = { firstName: firstName, email: email };
+      // const person = { firstName: firstName, email: email };
+      const person = { id: new Date().getTime().toString(), firstName, email }; //using the ES6 shorthand
       console.log(person);
+      setPeople(() => {
+        return [...people, person];
+      });
+      setFirstName("");
+      setEmail("");
     } else {
       console.log("empty values");
     }
@@ -46,6 +52,15 @@ const ControlledInputs = () => {
           add Person
         </button>
       </form>
+      {people.map((person) => {
+        const { id, firstName, email } = person;
+        return (
+          <div className="item">
+            <h4>{firstName}</h4>
+            <p>{email}</p>
+          </div>
+        );
+      })}
     </article>
   );
 };

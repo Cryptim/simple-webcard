@@ -17,14 +17,14 @@ const reducer = (state, action) => {
       modalContent: "Item Added",
     };
   }
-  if (action.type === "No_Value") {
+  if (action.type === "NO_VALUE") {
     return {
       ...state,
       isModalOpen: true,
       modalContent: "Please enter value",
     };
   }
-  if (action === "CLOSE_MODAL") {
+  if (action.type === "CLOSE_MODAL") {
     return { ...state, isModalOpen: false };
   }
   throw new Error("No matching error type");

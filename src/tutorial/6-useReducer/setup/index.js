@@ -4,9 +4,10 @@ import { data } from "../../../data";
 // reducer function
 const reducer = (state, action) => {
   if (action.type === "ADD_ITEM") {
+    const newItem = [...state.people, action.payload];
     return {
       ...state,
-      people: data,
+      people: newItem,
       isModalOpen: true,
       modalContent: "Item Added",
     };
@@ -27,7 +28,8 @@ const Index = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (name) {
-      dispatch({ type: "ADD_ITEM" });
+      const newItem = { id: new Date().getTime().toString(), name };
+      dispatch({ type: "ADD_ITEM", payload: newItem });
       // setShowModal(true);
       // setPeople([...people, { id: new Date().getTime().toString(), name }]);
       // SetName("");

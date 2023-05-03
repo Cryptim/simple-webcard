@@ -2,24 +2,30 @@ import React, { useState, useReducer } from "react";
 import Modal from "./Modal";
 import { data } from "../../../data";
 // reducer function
-
+const reducer = (state, action) => {};
+const defaultState = {
+  people: [],
+  isModelOpen: "false",
+  modalContent: "Hello Nigerians",
+};
 const Index = () => {
   const [name, SetName] = useState("");
-  const [people, setPeople] = useState(data);
-  const [showModal, setShowModal] = useState(false);
+  // const [people, setPeople] = useState(data);
+  // const [showModal, setShowModal] = useState(false);
+  const [state, dispatch] = useReducer(reducer, defaultState);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (name) {
-      setShowModal(true);
-      setPeople([...people, { id: new Date().getTime().toString(), name }]);
-      SetName("");
+      // setShowModal(true);
+      // setPeople([...people, { id: new Date().getTime().toString(), name }]);
+      // SetName("");
     } else {
-      setShowModal(true);
+      // setShowModal(true);
     }
   };
   return (
     <>
-      {showModal && <Modal />}
+      {state.isModelOpen && <Modal />}
       <form onSubmit={handleSubmit} className="form">
         <div>
           <input
@@ -32,7 +38,7 @@ const Index = () => {
         </div>
         <button type="submit">add</button>
       </form>
-      {people.map((person) => {
+      {state.people.map((person) => {
         return (
           <div key={person.id}>
             <h4>{person.name}</h4>

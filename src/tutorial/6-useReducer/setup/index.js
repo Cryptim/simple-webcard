@@ -11,7 +11,8 @@ const Index = () => {
     e.preventDefault();
     if (name) {
       showModal(true);
-      setPeople([...people, { id: new Date().getTime().toString() }]);
+      setPeople([...people, { id: new Date().getTime().toString(), name }]);
+      SetName("");
     } else {
       showModal(true);
     }
@@ -31,6 +32,13 @@ const Index = () => {
         </div>
         <button type="submit">add</button>
       </form>
+      {people.map((person) => {
+        return (
+          <div key={person.id}>
+            <h4>{person.name}</h4>
+          </div>
+        );
+      })}
     </>
   );
 };

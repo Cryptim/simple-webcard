@@ -4,13 +4,16 @@ import { data } from "../../../data";
 // reducer function
 const reducer = (state, action) => {
   if (action.type === "ADD_ITEM") {
-    const newItem = [...state.people, action.payload];
+    const newPeople = [...state.people, action.payload];
     return {
       ...state,
-      people: newItem,
+      people: newPeople,
       isModalOpen: true,
       modalContent: "Item Added",
     };
+  }
+  if (action.type === "No_Value") {
+    return { ...state, isModalOpen: true, modalContent: "Please enter value" };
   }
 
   throw new Error("No matching error type");
@@ -32,10 +35,10 @@ const Index = () => {
       dispatch({ type: "ADD_ITEM", payload: newItem });
       // setShowModal(true);
       // setPeople([...people, { id: new Date().getTime().toString(), name }]);
-      // SetName("");
+      SetName("");
     } else {
       // setShowModal(true);
-      dispatch({ type: "RANDOM" });
+      dispatch({ type: "No_Value" });
     }
   };
   return (

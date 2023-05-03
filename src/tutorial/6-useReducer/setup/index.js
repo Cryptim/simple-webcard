@@ -4,10 +4,35 @@ import { data } from "../../../data";
 // reducer function
 
 const Index = () => {
+  const [name, SetName] = useState("");
   const [people, setPeople] = useState(data);
   const [showModal, setShowModal] = useState(false);
-  return <>{showModal && <Modal />}</>;
-  <form onSubmit={}></form>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (name) {
+      showModal(true);
+      setPeople([...people, { id: new Date().getTime().toString() }]);
+    } else {
+      showModal(true);
+    }
+  };
+  return (
+    <>
+      {showModal && <Modal />}
+      <form onSubmit={handleSubmit} className="form">
+        <div>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => {
+              SetName(e.target.value);
+            }}
+          ></input>
+        </div>
+        <button type="submit">add</button>
+      </form>
+    </>
+  );
 };
 
 export default Index;

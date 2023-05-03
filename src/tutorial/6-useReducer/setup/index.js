@@ -2,11 +2,22 @@ import React, { useState, useReducer } from "react";
 import Modal from "./Modal";
 import { data } from "../../../data";
 // reducer function
-const reducer = (state, action) => {};
+const reducer = (state, action) => {
+  if (action.type === "ADD_ITEM") {
+    return {
+      ...state,
+      people: data,
+      isModalOpen: true,
+      modalContent: "Item Added",
+    };
+  }
+
+  throw new Error("No matching error type");
+};
 const defaultState = {
   people: [],
   isModelOpen: "false",
-  modalContent: "Hello Nigerians",
+  modalContent: "",
 };
 const Index = () => {
   const [name, SetName] = useState("");
@@ -16,11 +27,13 @@ const Index = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (name) {
+      dispatch({ type: "ADD_ITEM" });
       // setShowModal(true);
       // setPeople([...people, { id: new Date().getTime().toString(), name }]);
       // SetName("");
     } else {
       // setShowModal(true);
+      dispatch({ type: "RANDOM" });
     }
   };
   return (

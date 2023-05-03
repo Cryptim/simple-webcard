@@ -1,6 +1,11 @@
 import React, { useState, useReducer } from "react";
 import Modal from "./Modal";
 import { data } from "../../../data";
+const defaultState = {
+  people: [],
+  isModelOpen: "false",
+  modalContent: "",
+};
 // reducer function
 const reducer = (state, action) => {
   if (action.type === "ADD_ITEM") {
@@ -18,11 +23,7 @@ const reducer = (state, action) => {
 
   throw new Error("No matching error type");
 };
-const defaultState = {
-  people: [],
-  isModelOpen: "false",
-  modalContent: "",
-};
+
 const Index = () => {
   const [name, SetName] = useState("");
   // const [people, setPeople] = useState(data);
@@ -38,7 +39,7 @@ const Index = () => {
       SetName("");
     } else {
       // setShowModal(true);
-      dispatch({ type: "No_Value" });
+      dispatch({ type: "NO_VALUE" });
     }
   };
   return (
@@ -58,7 +59,7 @@ const Index = () => {
       </form>
       {state.people.map((person) => {
         return (
-          <div key={person.id}>
+          <div key={person.id} className="item">
             <h4>{person.name}</h4>
           </div>
         );

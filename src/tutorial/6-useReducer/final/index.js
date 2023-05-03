@@ -12,7 +12,7 @@ const Index = () => {
   const [name, setName] = useState('');
   const [state, dispatch] = useReducer(reducer, defaultState);
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(src/tutorial/6-useReducer/final/index.js);
     if (name) {
       const newItem = { id: new Date().getTime().toString(), name };
       dispatch({ type: 'ADD_ITEM', payload: newItem });

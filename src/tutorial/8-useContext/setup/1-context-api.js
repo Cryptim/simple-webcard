@@ -4,7 +4,7 @@ import { data } from "../../../data";
 // fix - context api, redux (for more complex cases)
 const personContext = React.createContext();
 //now we have access to two componeents-Provider-consumer
-
+//personContent.provider/consumer
 const ContextAPI = () => {
   const [people, setPeople] = useState(data);
   const removePerson = (id) => {
